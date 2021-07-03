@@ -37,6 +37,8 @@ public class Gun : MonoBehaviour
                 {
                     Instantiate(BloodShed, hit.point,  Quaternion.FromToRotation(Vector3.forward, hit.normal));
                     hit.transform.gameObject.GetComponent<Enemy>().Damage(dmg);
+                    hit.transform.gameObject.GetComponent<EnemyHealth>().Damage(dmg);
+                    
                 }
 
             }

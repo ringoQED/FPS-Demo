@@ -112,17 +112,22 @@ public class Enemy : MonoBehaviour
             AS.PlayOneShot(zombie_hurt);
             anim.SetTrigger("Hurt");
             health -= dmg;
+
+            if (health <=0)
+            {
+
+                dead = true;
+                AS.PlayOneShot(zombie_die);
+                anim.SetTrigger("Die");
+                NM.enabled = false;
+                this.enabled = false;
+
+            }
+
             Debug.Log("Enemy health : " + health);
         }
-        else if ((health <= 0) && (!dead))
-        {
-            dead = true;
-            AS.PlayOneShot(zombie_die);
-            anim.SetTrigger("Die");
-            NM.enabled = false;
-            this.enabled = false;
-            
-        }
+        
+        
     }
 
 
